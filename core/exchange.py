@@ -39,6 +39,6 @@ def gemini():
 def kraken():
     url: str = KRAKEN_URL
     response: requests.Response = requests.get(url)
-    order_book: dict = response.json()
-    results: dict = order_book["result"]["XXBTZUSD"]
-    return results
+    result: dict = response.json()
+    order_book: dict = result["result"]["XXBTZUSD"]
+    return order_book

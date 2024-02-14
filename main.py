@@ -1,4 +1,5 @@
 import time
+from decimal import Decimal, InvalidOperation
 
 from core import exchange, aggregator, command, calculator
 
@@ -6,9 +7,9 @@ from core import exchange, aggregator, command, calculator
 def main():
     exchanges = [exchange.coinbase, exchange.gemini, exchange.kraken]
     try:
-        quantity: int = int(input("Please input your desired quantity (Default = 10): "))
-    except ValueError:
-        quantity: int = 10
+        quantity: Decimal = Decimal(input("Please input your desired quantity (Default = 10): "))
+    except InvalidOperation:
+        quantity: Decimal = Decimal(10)
 
     start_time = time.time()
     try:

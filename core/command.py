@@ -1,10 +1,11 @@
 from typing import Callable
+from decimal import Decimal
 
 
 class OrderBookCommand:
-    def __init__(self, exchanges: list, quantity):
+    def __init__(self, exchanges: list, quantity: Decimal):
         self.exchanges: list[Callable] = exchanges
-        self.quantity: int = quantity
+        self.quantity: Decimal = quantity
     
     def run(self, aggregator: Callable, calculator: Callable) -> None:
         _aggregator = aggregator()
