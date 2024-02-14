@@ -5,7 +5,8 @@ from core import exchange, aggregator, command, calculator
 
 
 def main():
-    exchanges = [exchange.coinbase, exchange.gemini, exchange.kraken]
+    exchanges = exchange.Exchanges()
+    exchange_list = [exchanges.coinbase, exchanges.gemini, exchanges.kraken]
     try:
         quantity: Decimal = Decimal(input("Please input your desired quantity (Default = 10): "))
     except InvalidOperation:
@@ -14,12 +15,12 @@ def main():
     start_time = time.time()
     try:
         program = command.OrderBookCommand(
-            exchanges=exchanges,
+            exchanges=exchange_list,
             quantity=quantity
         )
         program.run(
             aggregator=aggregator.OrderBookAggregator,
-            calculator=calculator.price_calculator
+            calculator=calculator.PriceCalculator
         )
     except Exception as error:
         print(error)

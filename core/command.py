@@ -11,8 +11,10 @@ class OrderBookCommand:
         _aggregator = aggregator()
         bids, asks = _aggregator.merge_order_books(self.exchanges)
 
-        buy_price, sell_price = calculator(
+        _calculator = calculator(
             bids=bids, asks=asks, quantity=self.quantity
         )
+        buy_price, sell_price = _calculator.calculate()
+
         print(f"Price to buy {self.quantity} bitcoins: ${buy_price:.2f}")
         print(f"Price to sell {self.quantity} bitcoins: ${sell_price:.2f}")

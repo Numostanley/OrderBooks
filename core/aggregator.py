@@ -6,13 +6,13 @@ class OrderBookAggregator:
         self.merged_order_book: dict[str, list] = {'bids': [], 'asks': []}
 
     @staticmethod
-    def fetch_order_book(exchange: Callable):
+    def fetch_order_book(exchange: Callable) -> dict:
         order_book: dict = exchange()
         return order_book
 
     def merge_order_books(self, exchanges: list[Callable]) -> tuple[list[list], list[list]]:
         for exchange in exchanges:
-            order_book = self.fetch_order_book(exchange)
+            order_book: dict = self.fetch_order_book(exchange)
             bids: list[tuple] = order_book['bids']
             asks: list[tuple] = order_book['asks']
             self.merged_order_book['bids'].extend(bids)
