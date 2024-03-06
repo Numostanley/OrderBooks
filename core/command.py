@@ -16,5 +16,5 @@ class OrderBookCommand:
         )
         buy_price, sell_price = _calculator.calculate()
 
-        print(f"Price to buy {self.quantity} bitcoins: ${buy_price:.2f}")
-        print(f"Price to sell {self.quantity} bitcoins: ${sell_price:.2f}")
+        print(f"Price to buy {self.quantity} bitcoins: ${buy_price}")
+        print(f"Price to sell {self.quantity} bitcoins: ${sell_price}")

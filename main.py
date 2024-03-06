@@ -6,7 +6,7 @@ from core import exchange, aggregator, command, calculator
 
 def main():
     exchanges = exchange.Exchanges()
-    exchange_list = [exchanges.coinbase, exchanges.gemini, exchanges.kraken]
+    exchange_list = [exchanges.coinbase, exchanges.gemini]
     try:
         quantity: Decimal = Decimal(input("Please input your desired quantity (Default = 10): "))
     except InvalidOperation:
